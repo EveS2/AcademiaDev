@@ -1,14 +1,18 @@
 public enum SubscriptionPlan {
-    BasicPlan(3), 
-    PremiumPlan(Integer.MAX_VALUE);
+    BASIC_PLAN(3),
+    PREMIUM_PLAN(-1);
 
     private final int limiteCursos;
 
-    private SubscriptionPlan(int limiteCursos) {
+    SubscriptionPlan(int limiteCursos) {
         this.limiteCursos = limiteCursos;
     }
 
     public int getLimiteCursos() {
-        return this.limiteCursos;
+        return limiteCursos;
+    }
+
+    public boolean permiteNovaMatricula(int quantidadeAtual) {
+        return limiteCursos == -1 || quantidadeAtual < limiteCursos;
     }
 }
